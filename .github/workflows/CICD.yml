@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          compose-file: ./compose.yml
+          compose-file: "./compose.yml"
           push: true
           tags: |
             ${{ secrets.DOCKER_HUB_USERNAME}}/${{ secrets.docker_repository }}:${{ github.sha }}
