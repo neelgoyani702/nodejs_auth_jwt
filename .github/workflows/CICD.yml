@@ -36,4 +36,4 @@ jobs:
             ${{ secrets.DOCKER_HUB_USERNAME}}/${{ secrets.docker_repository }}:${{ github.sha }}
             ${{ secrets.DOCKER_HUB_USERNAME}}/${{ secrets.docker_repository }}:latest
           secrets: |
-            "NEXTAUTH_URL=${{ secrets."MONGO_DB_URI }}"
+            "MONGO_DB_URI=${{ secrets.MONGO_DB_URI }}"
