@@ -16,8 +16,6 @@ jobs:
       - name: Create .env file 📝
         run: |
           echo "MONGO_DB_URI=${{ secrets.MONGO_DB_URI }}" >> .env
-          echo "POSTGRES_URL=${{ secrets.POSTGRES_URL }}" >> .env
-          echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
 
       - name: Set up Docker Buildx 🚀
         uses: docker/setup-buildx-action@v3
@@ -32,11 +30,10 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
+          compose-file: ./compose.yml
           push: true
           tags: |
             ${{ secrets.DOCKER_HUB_USERNAME}}/${{ secrets.docker_repository }}:${{ github.sha }}
             ${{ secrets.DOCKER_HUB_USERNAME}}/${{ secrets.docker_repository }}:latest
           secrets: |
-            "NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }}"
-            "POSTGRES_URL=${{ secrets.POSTGRES_URL }}"
+            "NEXTAUTH_URL=${{ secrets."MONGO_DB_URI }}"
