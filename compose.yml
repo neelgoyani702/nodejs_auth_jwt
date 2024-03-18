@@ -1,0 +1,30 @@
+version: "3"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo
+    networks:
+      - mern-network
+    environment:
+      - MONGO_DB_URI=mongodb://mongo:27017/mern
+    ports:
+      - "3000:3000"
+    # restart: on-failure
+    # restart_delay: 5000
+    command: ["npm", "start"]
+
+  mongo:
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    networks:
+      - mern-network
+    ports:
+      - 27017:27017
+
+networks:
+  mern-network:
+    driver: bridge
