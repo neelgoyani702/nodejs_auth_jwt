@@ -34,7 +34,7 @@ jobs:
           file: ./compose.yml
           push: true
           tags: |
-            ${{ secrets.DOCKER_HUB_USERNAME}}/${{ secrets.docker_repository }}:${{ github.sha }}
-            ${{ secrets.DOCKER_HUB_USERNAME}}/${{ secrets.docker_repository }}:latest
+            # ${{ secrets.DOCKER_HUB_USERNAME}}/${{ secrets.docker_repository.name }}:${{ github.sha }}
+            ${{ secrets.DOCKER_HUB_USERNAME}}/${{ secrets.docker_repository.name }}:latest
           secrets: |
             "MONGO_DB_URI=${{ secrets.MONGO_DB_URI }}"
