@@ -31,7 +31,7 @@ jobs:
           context: .
           # compose-file: "./compose.yml"
           # file: ./Dockerfile
-          file: ./compose.yml
+          # file: ./compose.yml
           push: true
           tags: |
             # ${{ secrets.DOCKER_HUB_USERNAME}}/${{ secrets.docker_repository.name }}:${{ github.sha }}
